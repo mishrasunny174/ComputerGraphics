@@ -1,0 +1,6 @@
+Things turn green if correct flag is entered.
+Things are red otherwise.
+
+Tested on DOSBox.
+
+[MIRAGE.ARJ]({{resource('MIRAGE.ARJ')}})
