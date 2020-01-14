@@ -1,0 +1,6 @@
+- https://github.com/cirosantilli/ralf-brown-interrupt-list/tree/master/inter61d
+- http://www.ctyme.com/intr/int-10.htm
+- http://www.ctyme.com/intr/cat-046.htm
+- https://en.wikipedia.org/wiki/VESA_BIOS_Extensions
+- https://archive.org/details/programmersguidetotheegavgaandsupervgacardsbyrichardf.ferraro19943rdedition/page/n3
+
