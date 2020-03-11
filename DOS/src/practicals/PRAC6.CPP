@@ -314,7 +314,7 @@ void reflection() {
 				reflectionAboutYX();
 				break;
       case 5:
-        reflectionAboutAnyLine();
+        reflectionAboutLine();
         break;
 			default:
 				cout<<"Wrong choice try again ...";
