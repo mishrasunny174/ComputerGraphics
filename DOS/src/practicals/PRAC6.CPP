@@ -162,8 +162,8 @@ void shear() {
 	}
 	cout<<"Enter shear factors (x, y): ";
 	cin>>xFact>>yFact;
-	double translationMatrix[3][3] = {{xFact, 0, 0},
-									  {0, yFact, 0},
+	double translationMatrix[3][3] = {{1, yFact, 0},
+									  {xFact, 1, 0},
 									  {0, 0, 1}};
 	double result[3][3] = {{0, 0, 0},
 						   {0, 0, 0},
