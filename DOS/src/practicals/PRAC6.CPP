@@ -28,6 +28,7 @@ void reflectionAboutX();
 void reflectionAboutY();
 void reflectionAboutXY();
 void reflectionAboutYX();
+void reflectionAboutLine();
 void drawCanvas();
 
 int main() {
@@ -81,11 +82,11 @@ void translate() {
 	cout<<"Enter translation factors (x, y): ";
 	cin>>xFact>>yFact;
 	double translationMatrix[3][3] = {{1, 0, 0},
-									  {0, 1, 0},
-									  {xFact, yFact, 1}};
-	double result[3][3] = {{0, 0, 0},
-						   {0, 0, 0},
-						   {0, 0, 0}};
+									                  {0, 1, 0},
+									                  {xFact, yFact, 1}};
+	double result[3][3] = { {0, 0, 0},
+						              {0, 0, 0},
+						              {0, 0, 0} };
 	matrixMultiplication(triangle, translationMatrix, result);
 	initgraph(&gd, &gm, "C:\\tc\\bgi");
 	drawCanvas();
@@ -136,11 +137,11 @@ void scale() {
 	cout<<"Enter scaling factor : ";
 	cin>>factor;
 	double translationMatrix[3][3] = {{factor, 0, 0},
-									  {0, factor, 0},
-									  {0, 0, 1}};
-	double result[3][3] = {{0, 0, 0},
-						   {0, 0, 0},
-						   {0, 0, 0}};
+									                  {0, factor, 0},
+									                  {0, 0, 1}};
+	double result[3][3] = { {0, 0, 0},
+						              {0, 0, 0},
+						              {0, 0, 0}};
 	matrixMultiplication(triangle, translationMatrix, result);
 	initgraph(&gd, &gm, "C:\\tc\\bgi");
 	drawCanvas();
@@ -163,11 +164,11 @@ void shear() {
 	cout<<"Enter shear factors (x, y): ";
 	cin>>xFact>>yFact;
 	double translationMatrix[3][3] = {{1, yFact, 0},
-									  {xFact, 1, 0},
-									  {0, 0, 1}};
+									                  {xFact, 1, 0},
+									                  {0, 0, 1}};
 	double result[3][3] = {{0, 0, 0},
-						   {0, 0, 0},
-						   {0, 0, 0}};
+						            {0, 0, 0},
+						            {0, 0, 0}};
 	matrixMultiplication(triangle, translationMatrix, result);
 	initgraph(&gd, &gm, "C:\\tc\\bgi");
 	drawCanvas();
@@ -187,11 +188,11 @@ void reflectionAboutX() {
 		triangle[i][2] = 1;
 	}
 	double translationMatrix[3][3] = {{1, 0, 0},
-									  {0, -1, 0},
-									  {0, 0, 1}};
+									                  {0, -1, 0},
+									                  {0, 0, 1}};
 	double result[3][3] = {{0, 0, 0},
-						   {0, 0, 0},
-						   {0, 0, 0}};
+						            {0, 0, 0},
+						            {0, 0, 0}};
 	matrixMultiplication(triangle, translationMatrix, result);
 	initgraph(&gd, &gm, "C:\\tc\\bgi");
 	drawCanvas();
@@ -211,11 +212,11 @@ void reflectionAboutY() {
 		triangle[i][2] = 1;
 	}
 	double translationMatrix[3][3] = {{-1, 0, 0},
-									  {0, 1, 0},
-									  {0, 0, 1}};
+									                  {0, 1, 0},
+									                  {0, 0, 1}};
 	double result[3][3] = {{0, 0, 0},
-						   {0, 0, 0},
-						   {0, 0, 0}};
+						            {0, 0, 0},
+						            {0, 0, 0}};
 	matrixMultiplication(triangle, translationMatrix, result);
 	initgraph(&gd, &gm, "C:\\tc\\bgi");
 	drawCanvas();
@@ -235,11 +236,11 @@ void reflectionAboutXY() {
 		triangle[i][2] = 1;
 	}
 	double translationMatrix[3][3] = {{0, 1, 0},
-									  {1, 0, 0},
-									  {0, 0, 1}};
+									                  {1, 0, 0},
+									                  {0, 0, 1}};
 	double result[3][3] = {{0, 0, 0},
-						   {0, 0, 0},
-						   {0, 0, 0}};
+						            {0, 0, 0},
+						            {0, 0, 0}};
 	matrixMultiplication(triangle, translationMatrix, result);
 	initgraph(&gd, &gm, "C:\\tc\\bgi");
 	drawCanvas();
@@ -259,11 +260,11 @@ void reflectionAboutYX() {
 		triangle[i][2] = 1;
 	}
 	double translationMatrix[3][3] = {{0, -1, 0},
-									  {-1, 0, 0},
-									  {0, 0, 1}};
+									                  {-1, 0, 0},
+									                  {0, 0, 1}};
 	double result[3][3] = {{0, 0, 0},
-						   {0, 0, 0},
-						   {0, 0, 0}};
+						            {0, 0, 0},
+						            {0, 0, 0}};
 	matrixMultiplication(triangle, translationMatrix, result);
 	initgraph(&gd, &gm, "C:\\tc\\bgi");
 	drawCanvas();
@@ -293,6 +294,7 @@ void reflection() {
 		cout<<"2) Reflection about Y axis"<<endl;
 		cout<<"3) Reflection about Y=X axis"<<endl;
 		cout<<"4) Reflection about Y=-X axis"<<endl;
+    cout<<"5) Reflection about any line"<<endl;
 		cout<<"Enter 0 to return to main menu ..."<<endl;
 		cout<<"Enter your choice: ";
 		cin>>choice;
@@ -311,11 +313,46 @@ void reflection() {
 			case 4:
 				reflectionAboutYX();
 				break;
+      case 5:
+        reflectionAboutAnyLine();
+        break;
 			default:
 				cout<<"Wrong choice try again ...";
 				getch();
 		}
 	}
+}
+
+void reflectionAboutLine() {
+	double x1, y1, x2, y2;
+	double angle;
+	int gd=DETECT, gm;
+	double triangle[3][3];
+	cout<<"Enter co-ordinates of any two points on the line: ";
+	cout<<"Enter point 1: ";
+	cin>>x1>>y1;
+	cout<<"Enter point 2: ";
+	cin>>x2>>y2;
+	angle = atan((y2-y1)/(x2-x1));
+	cout<<"### Enter triangle co-ordinates ###"<<endl;
+	for(int i=0; i<3; i++) {
+		cout<<"Enter point "<<i+1<<" : ";
+		cin>>triangle[i][0]>>triangle[i][1];
+		triangle[i][2] = 1;
+	}
+	double translationMatrix[3][3] = {{cos(angle)*cos(angle) - sin(angle)*sin(angle), sin(2*angle), 0},
+									                  {sin(2*angle), sin(angle)*sin(angle) - cos(angle)*cos(angle), 0},
+									                  {0, 0, 1}};
+	double result[3][3] = {{0, 0, 0},
+						            {0, 0, 0},
+						            {0, 0, 0}};
+	matrixMultiplication(triangle, translationMatrix, result);
+	initgraph(&gd, &gm, "C:\\tc\\bgi");
+	drawCanvas();
+	drawTriangle(triangle, RED);
+	drawTriangle(result, BLUE);
+	getch();
+	closegraph();
 }
 
 void drawCanvas() {
