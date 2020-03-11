@@ -258,8 +258,8 @@ void reflectionAboutYX() {
 		cin>>triangle[i][0]>>triangle[i][1];
 		triangle[i][2] = 1;
 	}
-	double translationMatrix[3][3] = {{-1, 0, 0},
-									  {0, -1, 0},
+	double translationMatrix[3][3] = {{0, -1, 0},
+									  {-1, 0, 0},
 									  {0, 0, 1}};
 	double result[3][3] = {{0, 0, 0},
 						   {0, 0, 0},
