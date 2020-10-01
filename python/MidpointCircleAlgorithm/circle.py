@@ -5,6 +5,7 @@ import time
 
 WIDTH, HEIGHT = 400, 400
 
+# Circle Symmetry Function
 def circleSymmetry(x, y):
     glVertex2d(200+x, 200+y)
     glVertex2d(200+x, 200-y)
@@ -15,7 +16,7 @@ def circleSymmetry(x, y):
     glVertex2d(200-y, 200+x)
     glVertex2d(200-y, 200-x)
 
-
+# Algorithm Implementation
 def midPointCircleAlgo(r):
     x = 0
     y = r
@@ -30,6 +31,7 @@ def midPointCircleAlgo(r):
         x+=1
         circleSymmetry(x, y)
 
+# Display function
 def display():
     glClear(GL_COLOR_BUFFER_BIT) # clear with black color
     glColor3f(1.0, 1.0, 1.0)
